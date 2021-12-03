@@ -1,0 +1,11 @@
+.mobileNav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+@font-face {
+    font-family: 'AA Xirod';
+    src: local('AA Xirod'), url(./../../assets/fonts/AA_Xirod.ttf) format('ttf');
+  }

@@ -1,15 +1,47 @@
 import Link from 'next/link'
+import { useDispatch } from 'react-redux'
 import Layout from '../components/Layout'
+import { login } from './redux/store/auth-reducer'
+import {
+    Text,
+    Box
+} from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import { Module } from './../components/Module/Module'
+import { Module as ModuleModel, moduleAPI } from './api/module'
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const IndexPage = () => {
+    const moduleId: Number = 4294967296
+    const [modules, setModules] = useState<ModuleModel[]>()
+    const dispatch = useDispatch()
+
+    useEffect(
+        () => {
+            dispatch(login("root", "root"))
+        },
+        [],
+    )
+
+    useEffect(
+        () => {
+            async function getModules() {
+                let modules = await moduleAPI.getModules({offset: 1, limit: 0})
+                setModules(modules.modules)
+            }
+            getModules()
+        },
+        []
+    )
+
+    
+
+    return (
+        <Box>
+            <Module
+                modules={modules}
+            />
+        </Box>
+    )
+}
 
 export default IndexPage
