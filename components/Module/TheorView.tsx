@@ -14,7 +14,6 @@ import {AiOutlineExclamationCircle} from 'react-icons/ai'
 import { useEffect, useState } from 'react'
 import { moduleAPI, PractTest, TheorTest } from '../../pages/api/module'
 
-
 export type TheorViewProps = {
     name: String
     subModuleID: Number
@@ -46,7 +45,7 @@ export const TheorView = (props: TheorViewProps) => {
     const Theory = () => {
         return (
         <Box
-        p={5}
+        pb={2}
         >
             <Text>
                 {text}
@@ -96,7 +95,7 @@ export const TheorView = (props: TheorViewProps) => {
 
     const Questions = () => {
         return (
-            <VStack pt={5}>
+            <VStack pt={5} align="">
             {
                 theorTest?.questions?.map(
                     (item, index) => {
@@ -162,6 +161,25 @@ export const TheorView = (props: TheorViewProps) => {
                     <Divider
                         text="Проверка ваших теоретических знаний на практике"
                     />
+                    <Box pb={3}/>
+                    <Box
+                        direction="row"
+                        border="1px"
+                        borderWidth="1px"
+                        borderRadius="lg"
+                        borderColor="blue.700"
+                        alignContent="center"
+                        h="100%"
+                        w="100%"
+                    >
+                        <iframe 
+                        src="/unity/index.html"
+                        height="800px"
+                        width="100%"
+                        >
+
+                        </iframe>
+                    </Box>
                     <Spacer/>
                     <Box p={10}>
                     </Box>
